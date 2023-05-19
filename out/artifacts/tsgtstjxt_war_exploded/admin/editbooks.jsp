@@ -1,0 +1,94 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%><%@ taglib prefix="c"
+	uri="http://java.sun.com/jsp/jstl/core"%><jsp:include page="check_logstate.jsp"></jsp:include>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<base href="<%=basePath%>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/books.js" charset="utf-8"></script>
+<script type="text/javascript" src="jsselimage.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript" src="<%=basePath%>My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<link href="css/four.css" rel="stylesheet" type="text/css" />
+</head>
+<%
+	String message = (String) request.getAttribute("message");
+	if (message == null) {
+		message = "";
+	}
+	if (!message.trim().equals("")) {
+		out.println("<script language='javascript'>");
+		out.println("alert('" + message + "');");
+		out.println("</script>");
+	}
+	request.removeAttribute("message");
+%><body>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr valign="top">
+			<td bgcolor="#FFFFFF"><form action="books/updateBooks.action" name="myform" method="post"
+					onsubmit="return check()">
+					<table width="40%" border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#aec3de">
+						<tr align="center" bgcolor="#F2FDFF">
+							<td align="left" colspan="2" class="optiontitle">修改图书<input type="hidden" name="booksid"
+								value="${books.booksid}" /><input type="hidden" name="addtime" id="addtime" value="${books.addtime}" /><input
+								type="hidden" name="lendnum" id="lendnum" value="${books.lendnum}" /></td>
+						</tr>
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">图书名称</td>
+							<td align="left"><input type="text" name="booksname" style="width: 160px" id="booksname"
+								value="${books.booksname}" /></td>
+						</tr>
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">图片</td>
+							<td align="left"><input type="text" name="image" style="width: 160px" id="image" value="${books.image}"
+								onclick="selimage();" readonly="readonly" /></td>
+						</tr><!--毕设成品下载网址   codebag.cn-->
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">图书类型</td>
+							<td align="left"><select name="cateid" style="width: 160px" id="cateid"><c:forEach
+										items="${cateList}" var="cate">
+										<option value="${cate.cateid}">${cate.catename }</option>
+									</c:forEach></select></td>
+						</tr>
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">出版社</td>
+							<td align="left"><input type="text" name="publisher" style="width: 160px" id="publisher"
+								value="${books.publisher}" /></td>
+						</tr>
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">作者</td>
+							<td align="left"><input type="text" name="author" style="width: 160px" id="author" value="${books.author}" /></td>
+						</tr>
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">库存数</td>
+							<td align="left"><input type="text" name="storage" style="width: 160px" id="storage"
+								value="${books.storage}" /></td>
+						</tr>
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">存放位置</td>
+							<td align="left"><input type="text" name="weizhi" style="width: 160px" id="weizhi" value="${books.weizhi}" /></td>
+						</tr>
+						<tr align="center" bgcolor="#F2FDFF">
+							<td width="20%" align="right">图书介绍</td>
+							<td align="left"><script type="text/javascript" src="ckeditor/ckeditor.js"></script> <textarea cols="80"
+									name="contents" id="contents" rows="10">${books.contents}</textarea> <script type="text/javascript">
+										CKEDITOR.replace('contents', {
+											language : 'zh-cn'
+										});
+									</script></td>
+						</tr>
+						<tr align="center" bgcolor="#ebf0f7">
+							<td colspan="2"><input type="submit" id='sub' value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset"
+								id='res' value="重置" /></td>
+						</tr>
+					</table>
+				</form></td>
+		</tr>
+	</table>
+</body>
+</html>

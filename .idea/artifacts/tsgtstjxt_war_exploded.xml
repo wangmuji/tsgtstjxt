@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="tsgtstjxt:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/tsgtstjxt_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="tsgtstjxt-idea" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="tsgtstjxt-idea/web/Web" />
+    </root>
+  </artifact>
+</component>
