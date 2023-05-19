@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="admin" type="com.entity.Admin" />
+		<typeAlias alias="users" type="com.entity.Users" />
+		<typeAlias alias="article" type="com.entity.Article" />
+		<typeAlias alias="cate" type="com.entity.Cate" />
+		<typeAlias alias="books" type="com.entity.Books" />
+		<typeAlias alias="orders" type="com.entity.Orders" />
+		<typeAlias alias="topic" type="com.entity.Topic" />
+		<typeAlias alias="complains" type="com.entity.Complains" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/entity/admin.xml" />
+		<mapper resource="com/entity/users.xml" />
+		<mapper resource="com/entity/article.xml" />
+		<mapper resource="com/entity/cate.xml" />
+		<mapper resource="com/entity/books.xml" />
+		<mapper resource="com/entity/orders.xml" />
+		<mapper resource="com/entity/topic.xml" />
+		<mapper resource="com/entity/complains.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 此程序作者 QQ:549710689 如有修改请联系本QQ -->
